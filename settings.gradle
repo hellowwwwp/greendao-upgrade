@@ -1,2 +1,4 @@
-rootProject.name = "your_name"
+rootProject.name = "greendao-upgrade"
 include ':app'
+include ':dbupgrade'
+include ':dbupgrade-processor'

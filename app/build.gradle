@@ -2,13 +2,15 @@ plugins {
     id 'com.android.application'
     id "kotlin-android"
     id "kotlin-kapt"
+    //greendao
+    id "org.greenrobot.greendao"
 }
 
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.your_name"
+        applicationId "com.example.greendao.upgrade"
         minSdk 22
         targetSdk 31
         versionCode 1
@@ -69,7 +71,26 @@ dependencies {
 
     implementation "com.blankj:utilcodex:1.30.0"
 
+    //greendao
+    implementation "org.greenrobot:greendao:3.3.0"
+
+    //greendao database upgrade
+    implementation project(":dbupgrade")
+    kapt project(":dbupgrade-processor")
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+
+greendao {
+    schemaVersion 2
+    //targetGenDir "src/main/java"
+    daoPackage "com.example.greendao.upgrade.dao"
+}
+
+kapt {
+    arguments {
+        arg("daoPackage", "com.example.greendao.upgrade.dao")
+    }
 }

@@ -1,15 +1,6 @@
-## 代码模板
+### GreenDao database upgrade
 
-#### 修改模板
-
-```
-1. <string name="app_name">your_name</string>
-
-2. rootProject.name = "your_name"
-
-3. applicationId "com.example.your_name"
-
-4. rename package: your_name
-
-5. 最后修改项目文件夹名称
-```
+- 获取旧表的所有字段名, 读取数据库获取
+- 获取新表的所有字段名, 通过 `DaoConfig` 获取
+- 通过执行 `ALTER TABLE table_name ADD column_name datatype` 添加新字段
+- 使用注解处理器添加 `DAO class`
